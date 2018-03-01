@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {FormTab} from "../resume.component";
 
 @Component({
-  selector: 'app-skills',
-  templateUrl: './skills.component.html',
-  styleUrls: ['./skills.component.css']
+  selector: 'app-custom',
+  templateUrl: './custom.component.html',
+  styleUrls: ['./custom.component.css']
 })
-export class SkillsComponent implements OnInit, FormTab {
+export class CustomComponent implements OnInit, FormTab {
 
   constructor() {
   }

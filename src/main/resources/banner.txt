@@ -1,12 +1,21 @@
 
-${AnsiColor.BLUE}  ______                             ______     __                  __      __                         ${AnsiColor.RED}   ________            __
-${AnsiColor.BLUE} |      \                           /      \   |  \                |  \    |  \                        ${AnsiColor.RED}  |        \          |  \
-${AnsiColor.BLUE}  \$$$$$$  _______   ______        |  $$$$$$\ _| $$_     ______   _| $$_    \$$  ______   _______      ${AnsiColor.RED}   \$$$$$$$$ __    __ | $$ __    __
-${AnsiColor.BLUE}   | $$   /       \ /      \       | $$___\$$|   $$ \   |      \ |   $$ \  |  \ /      \ |       \     ${AnsiColor.RED}      /  $$ |  \  |  \| $$|  \  |  \
-${AnsiColor.BLUE}   | $$  |  $$$$$$$|  $$$$$$\       \$$    \  \$$$$$$    \$$$$$$\ \$$$$$$  | $$|  $$$$$$\| $$$$$$$\    ${AnsiColor.RED}     /  $$  | $$  | $$| $$| $$  | $$
-${AnsiColor.BLUE}   | $$  | $$      | $$    $$       _\$$$$$$\  | $$ __  /      $$  | $$ __ | $$| $$  | $$| $$  | $$    ${AnsiColor.RED}    /  $$   | $$  | $$| $$| $$  | $$
-${AnsiColor.BLUE}  _| $$_ | $$_____ | $$$$$$$$      |  \__| $$  | $$|  \|  $$$$$$$  | $$|  \| $$| $$__/ $$| $$  | $$    ${AnsiColor.RED}   /  $$___ | $$__/ $$| $$| $$__/ $$
-${AnsiColor.BLUE} |   $$ \ \$$     \ \$$     \       \$$    $$   \$$  $$ \$$    $$   \$$  $$| $$ \$$    $$| $$  | $$    ${AnsiColor.RED}  |  $$    \ \$$    $$| $$ \$$    $$
-${AnsiColor.BLUE}  \$$$$$$  \$$$$$$$  \$$$$$$$        \$$$$$$     \$$$$   \$$$$$$$    \$$$$  \$$  \$$$$$$  \$$   \$$    ${AnsiColor.RED}   \$$$$$$$$  \$$$$$$  \$$  \$$$$$$
-${AnsiColor.BRIGHT_BLACK} /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\
-${AnsiColor.BRIGHT_BLACK} \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/
+
+${AnsiColor.BLUE}RRRRRRRRRRRRRRRRR    ${AnsiColor.RED} 333333333333333    ${AnsiColor.BLUE}                                          lllllll                            tttt            iiii
+${AnsiColor.BLUE}R::::::::::::::::R   ${AnsiColor.RED}3:::::::::::::::33  ${AnsiColor.BLUE}                                          l:::::l                         ttt:::t           i::::i
+${AnsiColor.BLUE}R::::::RRRRRR:::::R  ${AnsiColor.RED}3::::::33333::::::3 ${AnsiColor.BLUE}                                          l:::::l                         t:::::t            iiii
+${AnsiColor.BLUE}RR:::::R     R:::::R ${AnsiColor.RED}3333333     3:::::3 ${AnsiColor.BLUE}                                          l:::::l                         t:::::t
+${AnsiColor.BLUE}  R::::R     R:::::R ${AnsiColor.RED}            3:::::3 ${AnsiColor.BLUE}vvvvvvv           vvvvvvv   ooooooooooo    l::::l uuuuuu    uuuuuu  ttttttt:::::ttttttt    iiiiiii    ooooooooooo   nnnn  nnnnnnnn
+${AnsiColor.BLUE}  R::::R     R:::::R ${AnsiColor.RED}            3:::::3 ${AnsiColor.BLUE} v:::::v         v:::::v  oo:::::::::::oo  l::::l u::::u    u::::u  t:::::::::::::::::t    i:::::i  oo:::::::::::oo n:::nn::::::::nn
+${AnsiColor.BLUE}  R::::RRRRRR:::::R  ${AnsiColor.RED}    33333333:::::3  ${AnsiColor.BLUE}  v:::::v       v:::::v  o:::::::::::::::o l::::l u::::u    u::::u  t:::::::::::::::::t     i::::i o:::::::::::::::on::::::::::::::nn
+${AnsiColor.BLUE}  R:::::::::::::RR   ${AnsiColor.RED}    3:::::::::::3   ${AnsiColor.BLUE}   v:::::v     v:::::v   o:::::ooooo:::::o l::::l u::::u    u::::u  tttttt:::::::tttttt     i::::i o:::::ooooo:::::onn:::::::::::::::n
+${AnsiColor.BLUE}  R::::RRRRRR:::::R  ${AnsiColor.RED}    33333333:::::3  ${AnsiColor.BLUE}    v:::::v   v:::::v    o::::o     o::::o l::::l u::::u    u::::u        t:::::t           i::::i o::::o     o::::o  n:::::nnnn:::::n
+${AnsiColor.BLUE}  R::::R     R:::::R ${AnsiColor.RED}            3:::::3 ${AnsiColor.BLUE}     v:::::v v:::::v     o::::o     o::::o l::::l u::::u    u::::u        t:::::t           i::::i o::::o     o::::o  n::::n    n::::n
+${AnsiColor.BLUE}  R::::R     R:::::R ${AnsiColor.RED}            3:::::3 ${AnsiColor.BLUE}      v:::::v:::::v      o::::o     o::::o l::::l u::::u    u::::u        t:::::t           i::::i o::::o     o::::o  n::::n    n::::n
+${AnsiColor.BLUE}  R::::R     R:::::R ${AnsiColor.RED}            3:::::3 ${AnsiColor.BLUE}       v:::::::::v       o::::o     o::::o l::::l u:::::uuuu:::::u        t:::::t    tttttt i::::i o::::o     o::::o  n::::n    n::::n
+${AnsiColor.BLUE}RR:::::R     R:::::R ${AnsiColor.RED}3333333     3:::::3 ${AnsiColor.BLUE}        v:::::::v        o:::::ooooo:::::ol::::::lu:::::::::::::::uu      t::::::tttt:::::ti::::::io:::::ooooo:::::o  n::::n    n::::n
+${AnsiColor.BLUE}R::::::R     R:::::R ${AnsiColor.RED}3::::::33333::::::3 ${AnsiColor.BLUE}         v:::::v         o:::::::::::::::ol::::::l u:::::::::::::::u      tt::::::::::::::ti::::::io:::::::::::::::o  n::::n    n::::n
+${AnsiColor.BLUE}R::::::R     R:::::R ${AnsiColor.RED}3:::::::::::::::33  ${AnsiColor.BLUE}          v:::v           oo:::::::::::oo l::::::l  uu::::::::uu:::u        tt:::::::::::tti::::::i oo:::::::::::oo   n::::n    n::::n
+${AnsiColor.BLUE}RRRRRRRR     RRRRRRR ${AnsiColor.RED} 333333333333333    ${AnsiColor.BLUE}           vvv              ooooooooooo   llllllll    uuuuuuuu  uuuu          ttttttttttt  iiiiiiii   ooooooooooo     nnnnnn    nnnnnn
+
+
+

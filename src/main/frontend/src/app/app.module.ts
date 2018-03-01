@@ -8,6 +8,20 @@ import {ContactInfoComponent} from './resume/contact-info/contact-info.component
 import {WorkExperienceComponent} from './resume/work-experience/work-experience.component';
 import {EducationComponent} from './resume/education/education.component';
 import {SkillsComponent} from './resume/skills/skills.component';
+import {CustomComponent} from './resume/custom/custom.component';
+import {AdminComponent} from './admin/admin.component';
+import {LandingPageComponent} from './landing-page/landing-page.component';
+import {RouterModule, Routes} from "@angular/router";
+import {LoginComponent} from './login/login.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormService} from "./form.service";
+
+const appRoutes: Routes = [
+  {path: '', component: LoginComponent},
+  {path: 'resume', component: LandingPageComponent},
+  {path: 'create', component: ResumeComponent},
+  {path: 'load', component: AdminComponent}
+];
 
 
 @NgModule({
@@ -17,12 +31,19 @@ import {SkillsComponent} from './resume/skills/skills.component';
     ContactInfoComponent,
     WorkExperienceComponent,
     EducationComponent,
-    SkillsComponent
+    SkillsComponent,
+    CustomComponent,
+    AdminComponent,
+    LandingPageComponent,
+    LoginComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [FormService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

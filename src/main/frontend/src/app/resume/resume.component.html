@@ -1,19 +1,28 @@
+<button class="btn btn-primary" type="submit">Submit</button>
 <ul class="nav nav-tabs justify-content-center">
   <li class="nav-item">
-    <a class="nav-link" href="#" (click)="onTabClick(0)" [ngClass]="{'active':activeTab===0}">Contact Info</a>
+    <a class="nav-link" style="cursor: pointer" (click)="onTabClick(0)" [ngClass]="{'active':activeTab===0}">Contact
+      Info</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#" (click)="onTabClick(1)" [ngClass]="{'active':activeTab===1}">Work Experience</a>
+    <a class="nav-link" style="cursor: pointer" (click)="onTabClick(1)" [ngClass]="{'active':activeTab===1}">Work
+      Experience</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#" (click)="onTabClick(2)" [ngClass]="{'active':activeTab===2}">Education</a>
+    <a class="nav-link" style="cursor: pointer" (click)="onTabClick(2)"
+       [ngClass]="{'active':activeTab===2}">Education</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#" (click)="onTabClick(3)" [ngClass]="{'active':activeTab===3}">Skills</a>
+    <a class="nav-link" style="cursor: pointer" (click)="onTabClick(3)" [ngClass]="{'active':activeTab===3}">Misc</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="cursor: pointer" (click)="onTabClick(4)"
+       [ngClass]="{'active':activeTab===4}">Custom</a>
   </li>
 </ul>
 
-<app-contact-info *ngIf="activeTab===0"></app-contact-info>
-<app-work-experience *ngIf="activeTab===1"></app-work-experience>
-<app-education *ngIf="activeTab===2"></app-education>
-<app-skills *ngIf="activeTab===3"></app-skills>
+<app-contact-info *ngIf="activeTab===0" #activeTab></app-contact-info>
+<app-work-experience *ngIf="activeTab===1" #activeTab></app-work-experience>
+<app-education *ngIf="activeTab===2" #activeTab></app-education>
+<app-skills *ngIf="activeTab===3" #activeTab></app-skills>
+<app-custom *ngIf="activeTab===4" #activeTab></app-custom>
