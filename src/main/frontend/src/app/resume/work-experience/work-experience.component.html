@@ -10,96 +10,101 @@
 <form [formGroup]="workForm">
   <div formArrayName="workplaces" *ngFor="let workPlace of workForm.get('workplaces').controls; let workplaceI = index">
     <div class="row">
-      <div class="col-md-11 border border-secondary rounded item-group">
-        <div [formGroupName]="workplaceI">
+      <div class="col-md-11">
+        <div class="card form-card">
+          <div class="card-body">
+            <div [formGroupName]="workplaceI">
 
-          <div class="form-row align-items-center">
-            <div class="form-group col-md-5">
-              <label for="employerNameInput">Company</label>
-              <input type="text" class="form-control" id="employerNameInput" placeholder="Enter employer name"
-                     formControlName="employerName">
-            </div>
-            <div class="form-group col-md-5">
-              <label for="cityInput">City</label>
-              <input type="text" class="form-control" id="cityInput" placeholder="Enter city" formControlName="city">
-            </div>
-            <div class="form-group col-md-2">
-              <label for="inputState">State</label>
-              <select id="inputState" class="form-control" [formControlName]="'state'">
-                <option selected disabled value="">Select a state</option>
-                <option *ngFor="let state of states" [value]="state.abbreviation">{{state.name}}</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group" formArrayName="positions">
-            <div class="form-row align-items-center">
-              <div class="col-md-11">
-                <label>Position(s)</label>
+              <div class="form-row align-items-center">
+                <div class="form-group col-md-5">
+                  <label for="employerNameInput">Company</label>
+                  <input type="text" class="form-control" id="employerNameInput" placeholder="Enter employer name"
+                         formControlName="employerName">
+                </div>
+                <div class="form-group col-md-5">
+                  <label for="cityInput">City</label>
+                  <input type="text" class="form-control" id="cityInput" placeholder="Enter city"
+                         formControlName="city">
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="inputState">State</label>
+                  <select id="inputState" class="form-control" [formControlName]="'state'">
+                    <option selected disabled value="">Select a state</option>
+                    <option *ngFor="let state of states" [value]="state.abbreviation">{{state.name}}</option>
+                  </select>
+                </div>
               </div>
-              <div class="col-md-1">
+
+              <div class="form-group" formArrayName="positions">
+                <div class="form-row align-items-center">
+                  <div class="col-md-11">
+                    <label>Position(s)</label>
+                  </div>
+                  <div class="col-md-1">
                 <span style="cursor: pointer" class="fa fa-plus-square fa-2x"
                       (click)="onAddPosition(workplaceI)"></span>
-              </div>
-            </div>
+                  </div>
+                </div>
 
-            <div class="form-row align-items-center" #positions
-                 *ngFor="let positionControl of workPlace.get('positions').controls; let positionI = index"
-                 [formGroupName]="positionI">
-              <div class="col-md-7">
-                <input type="text" class="form-control" placeholder="Position title" formControlName="position">
-              </div>
-              <div class="col-md-2">
-                <select class="form-control" [formControlName]="'startDate'">
-                  <option selected disabled value="">Start year</option>
-                  <option *ngFor="let year of years" [value]="year">{{year}}</option>
-                </select>
-              </div>
-              <div class="col-md-2">
-                <select class="form-control" [formControlName]="'endDate'">
-                  <option selected disabled value="">End year</option>
-                  <option value="present">Present</option>
-                  <option *ngFor="let year of years" [value]="year">{{year}}</option>
-                </select>
-              </div>
-              <div class="col-md-1">
+                <div class="form-row align-items-center" #positions
+                     *ngFor="let positionControl of workPlace.get('positions').controls; let positionI = index"
+                     [formGroupName]="positionI">
+                  <div class="col-md-7">
+                    <input type="text" class="form-control" placeholder="Position title" formControlName="position">
+                  </div>
+                  <div class="col-md-2">
+                    <select class="form-control" [formControlName]="'startDate'">
+                      <option selected disabled value="">Start year</option>
+                      <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-2">
+                    <select class="form-control" [formControlName]="'endDate'">
+                      <option selected disabled value="">End year</option>
+                      <option value="present">Present</option>
+                      <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-1">
                 <span style="cursor: pointer" class="fa fa-minus-square fa-2x"
                       (click)="onDeletePosition(positionI, workplaceI)"></span>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
 
-          <div class="form-row align-items-center">
-            <div class="form-group col-md-12">
-              <label for="descriptionInput">Job Description</label>
-              <textarea class="form-control" id="descriptionInput" rows="3" formControlName="description"></textarea>
-            </div>
-          </div>
-
-          <div class="form-group" formArrayName="responsibilities">
-            <div class="form-row align-items-center">
-              <div class="col-md-11">
-                <label>Responsibilities</label>
+              <div class="form-row align-items-center">
+                <div class="form-group col-md-12">
+                  <label for="descriptionInput">Job Description</label>
+                  <textarea class="form-control" id="descriptionInput" rows="3"
+                            formControlName="description"></textarea>
+                </div>
               </div>
-              <div class="col-md-1">
+
+              <div class="form-group" formArrayName="responsibilities">
+                <div class="form-row align-items-center">
+                  <div class="col-md-11">
+                    <label>Responsibilities</label>
+                  </div>
+                  <div class="col-md-1">
                 <span style="cursor: pointer" class="fa fa-plus-square fa-2x"
                       (click)="onAddResponsibility(workplaceI)"></span>
-              </div>
-            </div>
+                  </div>
+                </div>
 
-            <div class="form-row align-items-center" #responsibilities
-                 *ngFor="let responsibility of workPlace.get('responsibilities').controls; let responsibilityI = index">
-              <div class="col-md-11">
-                <input type="text" class="form-control" placeholder="Enter job responsibility"
-                       [formControlName]="responsibilityI">
-              </div>
-              <div class="col-md-1">
+                <div class="form-row align-items-center" #responsibilities
+                     *ngFor="let responsibility of workPlace.get('responsibilities').controls; let responsibilityI = index">
+                  <div class="col-md-11">
+                    <input type="text" class="form-control" placeholder="Enter job responsibility"
+                           [formControlName]="responsibilityI">
+                  </div>
+                  <div class="col-md-1">
                 <span style="cursor: pointer" class="fa fa-minus-square fa-2x"
                       (click)="onDeleteResponsibility(responsibilityI, workplaceI)"></span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
       <div class="col-md-1">
