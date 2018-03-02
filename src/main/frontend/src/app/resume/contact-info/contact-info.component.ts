@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormService} from "../../form.service";
+import {FormService} from "../../service/form.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {FormTab} from "../resume.component";
 import {State} from "../../common/State";

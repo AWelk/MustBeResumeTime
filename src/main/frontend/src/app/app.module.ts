@@ -14,7 +14,7 @@ import {LandingPageComponent} from './landing-page/landing-page.component';
 import {RouterModule, Routes} from "@angular/router";
 import {LoginComponent} from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {FormService} from "./form.service";
+import {FormService} from "./service/form.service";
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},

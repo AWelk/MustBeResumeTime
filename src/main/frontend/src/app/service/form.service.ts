@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {FormGroup} from "@angular/forms";
-import {State} from "./common/State";
+import {State} from "../common/State";
 
 @Injectable()
 export class FormService {

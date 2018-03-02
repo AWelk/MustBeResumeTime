@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormTab} from "../resume.component";
 import {FormArray, FormControl, FormGroup} from "@angular/forms";
 import {State} from "../../common/State";
-import {FormService} from "../../form.service";
+import {FormService} from "../../service/form.service";
 
 @Component({
   selector: 'app-work-experience',
@@ -17,35 +17,23 @@ export class WorkExperienceComponent implements OnInit, FormTab {
   constructor(private formService: FormService) {
   }
 
-  ngOnInit() {
-    this.workForm = this.formService.getWorkForm();
-
-    if (!this.workForm) {
-
-      this.workForm = new FormGroup({
-        "workplaces": new FormArray([
-          new FormGroup({
-            "employerName": new FormControl(null),
-            "city": new FormControl(null),
-            "state": new FormControl(''),
-            "positions": new FormArray([
-              new FormGroup({
-                "position": new FormControl(null),
-                "startDate": new FormControl(""),
-                "endDate": new FormControl("")
-              })
-            ]),
-            "description": new FormControl(null),
-            "responsibilities": new FormArray([
-              new FormControl(null)
-            ])
-          })
-        ])
-      });
-    }
-
-    this.states = this.formService.getStates();
-    this.years = this.formService.getYears();
+  private static getWorkplaceForm(): FormGroup {
+    return new FormGroup({
+      "employerName": new FormControl(null),
+      "city": new FormControl(null),
+      "state": new FormControl(''),
+      "positions": new FormArray([
+        new FormGroup({
+          "position": new FormControl(null),
+          "startDate": new FormControl(""),
+          "endDate": new FormControl('')
+        })
+      ]),
+      "description": new FormControl(null),
+      "responsibilities": new FormArray([
+        new FormControl(null)
+      ])
+    });
   }
 
   saveForm(): void {
@@ -75,27 +63,26 @@ export class WorkExperienceComponent implements OnInit, FormTab {
     (<FormArray>(<FormArray>this.workForm.get("workplaces")).at(workplace).get('responsibilities')).removeAt(responsibility);
   }
 
-  onAddWorkPlace(): void {
-    const workplace: FormGroup = new FormGroup({
-      "employerName": new FormControl(null),
-      "city": new FormControl(null),
-      "state": new FormControl(''),
-      "positions": new FormArray([
-        new FormGroup({
-          "position": new FormControl(null),
-          "startDate": new FormControl(""),
-          "endDate": new FormControl('')
-        })
-      ]),
-      "description": new FormControl(null),
-      "responsibilities": new FormArray([
-        new FormControl(null)
-      ])
-    });
-    (<FormArray>this.workForm.get('workplaces')).insert(0, workplace);
+  ngOnInit() {
+    this.workForm = this.formService.getWorkForm();
+
+    if (!this.workForm) {
+
+      this.workForm = new FormGroup({
+        "workplaces": new FormArray([WorkExperienceComponent.getWorkplaceForm()])
+      });
+    }
+
+    this.states = this.formService.getStates();
+    this.years = this.formService.getYears();
   }
 
   onDeleteWorkplace(workplace: number) {
     (<FormArray>this.workForm.get('workplaces')).removeAt(workplace);
+  }
+
+  onAddWorkPlace(): void {
+    const workplace: FormGroup = WorkExperienceComponent.getWorkplaceForm();
+    (<FormArray>this.workForm.get('workplaces')).insert(0, workplace);
   }
 }
