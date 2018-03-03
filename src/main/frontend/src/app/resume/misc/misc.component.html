@@ -1,0 +1,63 @@
+<div class="row align-items-center">
+  <div class="col-md-12">
+    <h3>Miscellaneous</h3>
+  </div>
+</div>
+
+<form [formGroup]="miscForm">
+  <div class="form-group" formArrayName="skills">
+    <div class="card">
+      <div class="card-header">
+        Skills
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item"
+            *ngFor="let skill of miscForm.get('skills').controls; let skillI = index">
+          <div class="row align-items-center align-content-between">
+            <div class="col-md-11">
+              <input type="text" class="form-control" placeholder="Enter skill"
+                     [formControlName]="skillI">
+            </div>
+            <div class="col-md-1">
+                          <span style="cursor: pointer" class="fa fa-plus-circle fa-2x"
+                                (click)="onAddSkill()"
+                                *ngIf="skillI === 0; else deleteSkillRow"></span>
+              <ng-template #deleteSkillRow>
+                            <span style="cursor: pointer" class="fa fa-trash fa-2x"
+                                  (click)="onDeleteSkill(skillI)"></span>
+              </ng-template>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="form-group" formArrayName="expertise">
+    <div class="card">
+      <div class="card-header">
+        Expertise
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item"
+            *ngFor="let expertise of miscForm.get('expertise').controls; let expertiseI = index">
+          <div class="row align-items-center align-content-between">
+            <div class="col-md-11">
+              <input type="text" class="form-control" placeholder="Enter expertise"
+                     [formControlName]="expertiseI">
+            </div>
+            <div class="col-md-1">
+                          <span style="cursor: pointer" class="fa fa-plus-circle fa-2x"
+                                (click)="onAddExpertise()"
+                                *ngIf="expertiseI === 0; else deleteExpertiseRow"></span>
+              <ng-template #deleteExpertiseRow>
+                            <span style="cursor: pointer" class="fa fa-trash fa-2x"
+                                  (click)="onDeleteExpertise(expertiseI)"></span>
+              </ng-template>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</form>

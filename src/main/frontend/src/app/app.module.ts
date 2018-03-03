@@ -7,7 +7,7 @@ import {ResumeComponent} from './resume/resume.component';
 import {ContactInfoComponent} from './resume/contact-info/contact-info.component';
 import {WorkExperienceComponent} from './resume/work-experience/work-experience.component';
 import {EducationComponent} from './resume/education/education.component';
-import {SkillsComponent} from './resume/skills/skills.component';
+import {MiscComponent} from './resume/misc/misc.component';
 import {CustomComponent} from './resume/custom/custom.component';
 import {AdminComponent} from './admin/admin.component';
 import {LandingPageComponent} from './landing-page/landing-page.component';
@@ -31,7 +31,7 @@ const appRoutes: Routes = [
     ContactInfoComponent,
     WorkExperienceComponent,
     EducationComponent,
-    SkillsComponent,
+    MiscComponent,
     CustomComponent,
     AdminComponent,
     LandingPageComponent,
