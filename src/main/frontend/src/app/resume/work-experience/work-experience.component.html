@@ -5,7 +5,8 @@
 </div>
 
 <form [formGroup]="workForm">
-  <div formArrayName="workplaces" *ngFor="let workPlace of workForm.get('workplaces').controls; let workplaceI = index">
+  <div formArrayName="workplaces" class="mb-2"
+       *ngFor="let workPlace of workForm.get('workplaces').controls; let workplaceI = index">
     <div class="row">
       <div class="col-md-11">
         <div class="card form-card">

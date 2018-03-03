@@ -5,7 +5,7 @@
 </div>
 
 <form [formGroup]="edForm">
-  <div formArrayName="institutions"
+  <div formArrayName="institutions" class="mb-2"
        *ngFor="let institution of edForm.get('institutions').controls; let institutionI = index">
     <div class="row">
       <div class="col-md-11">
