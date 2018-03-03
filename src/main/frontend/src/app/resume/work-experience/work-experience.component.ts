@@ -47,6 +47,7 @@ export class WorkExperienceComponent implements OnInit, FormTab {
       "startDate": new FormControl(""),
       "endDate": new FormControl('')
     });
+    (<FormArray>(<FormArray>this.workForm.get("workplaces")).at(workplace).get('positions')).at(0).disable();
     (<FormArray>(<FormArray>this.workForm.get("workplaces")).at(workplace).get('positions')).insert(0, position);
   }
 
@@ -56,6 +57,7 @@ export class WorkExperienceComponent implements OnInit, FormTab {
 
   onAddResponsibility(workplace: number): void {
     const responsibility: FormControl = new FormControl(null);
+    (<FormArray>(<FormArray>this.workForm.get("workplaces")).at(workplace).get('responsibilities')).at(0).disable();
     (<FormArray>(<FormArray>this.workForm.get("workplaces")).at(workplace).get('responsibilities')).insert(0, responsibility);
   }
 
