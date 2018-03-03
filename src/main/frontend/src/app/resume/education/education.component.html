@@ -1,9 +1,6 @@
 <div class="row align-items-center">
-  <div class="col-md-11">
+  <div class="col-md-12">
     <h3>Education</h3>
-  </div>
-  <div class="col-md-1">
-    <span style="cursor: pointer" class="fa fa-plus-circle fa-2x" (click)="onAddInstitution()"></span>
   </div>
 </div>
 
@@ -69,8 +66,11 @@
         </div>
       </div>
       <div class="col-md-1">
-            <span style="cursor: pointer" class="fa fa-trash fa-2x"
-                  (click)="onDeleteInstitution(institutionI)"></span>
+        <span style="cursor: pointer" class="fa fa-plus-circle fa-2x" (click)="onAddInstitution()"
+              *ngIf="institutionI === 0; else deleteInstitution"></span>
+        <ng-template #deleteInstitution>
+          <span style="cursor: pointer" class="fa fa-trash fa-2x" (click)="onDeleteInstitution(institutionI)"></span>
+        </ng-template>
       </div>
     </div>
   </div>
