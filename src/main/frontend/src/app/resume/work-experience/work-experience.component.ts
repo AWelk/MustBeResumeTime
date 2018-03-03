@@ -3,6 +3,7 @@ import {FormTab} from "../resume.component";
 import {FormArray, FormControl, FormGroup} from "@angular/forms";
 import {State} from "../../common/State";
 import {FormService} from "../../service/form.service";
+import {AbstractControl} from "@angular/forms/src/model";
 
 @Component({
   selector: 'app-work-experience',
@@ -22,18 +23,22 @@ export class WorkExperienceComponent implements OnInit, FormTab {
       "employerName": new FormControl(null),
       "city": new FormControl(null),
       "state": new FormControl(''),
-      "positions": new FormArray([
-        new FormGroup({
-          "position": new FormControl(null),
-          "startDate": new FormControl(""),
-          "endDate": new FormControl('')
-        })
-      ]),
+      "positions": new FormArray([WorkExperienceComponent.getPositionForm()]),
       "description": new FormControl(null),
-      "responsibilities": new FormArray([
-        new FormControl(null)
-      ])
+      "responsibilities": new FormArray([WorkExperienceComponent.getResponsibilityForm()])
     });
+  }
+
+  private static getPositionForm(): AbstractControl {
+    return new FormGroup({
+      "position": new FormControl(null),
+      "startDate": new FormControl(""),
+      "endDate": new FormControl('')
+    });
+  }
+
+  private static getResponsibilityForm(): AbstractControl {
+    return new FormControl(null);
   }
 
   saveForm(): void {
@@ -42,11 +47,7 @@ export class WorkExperienceComponent implements OnInit, FormTab {
   }
 
   onAddPosition(workplace: number): void {
-    const position: FormGroup = new FormGroup({
-      "position": new FormControl(null),
-      "startDate": new FormControl(""),
-      "endDate": new FormControl('')
-    });
+    const position: AbstractControl = WorkExperienceComponent.getPositionForm();
     (<FormArray>(<FormArray>this.workForm.get("workplaces")).at(workplace).get('positions')).at(0).disable();
     (<FormArray>(<FormArray>this.workForm.get("workplaces")).at(workplace).get('positions')).insert(0, position);
   }
@@ -56,7 +57,7 @@ export class WorkExperienceComponent implements OnInit, FormTab {
   }
 
   onAddResponsibility(workplace: number): void {
-    const responsibility: FormControl = new FormControl(null);
+    const responsibility: AbstractControl = WorkExperienceComponent.getResponsibilityForm();
     (<FormArray>(<FormArray>this.workForm.get("workplaces")).at(workplace).get('responsibilities')).at(0).disable();
     (<FormArray>(<FormArray>this.workForm.get("workplaces")).at(workplace).get('responsibilities')).insert(0, responsibility);
   }
