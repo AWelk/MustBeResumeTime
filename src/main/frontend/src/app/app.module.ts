@@ -15,6 +15,7 @@ import {LoginComponent} from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FormService} from "./service/form.service";
 import {ReviewComponent} from './resume/review/review.component';
+import {ModalModule} from "ngx-bootstrap";
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule.forRoot()
   ],
   providers: [FormService],
   bootstrap: [AppComponent]
