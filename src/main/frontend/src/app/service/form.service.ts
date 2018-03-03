@@ -4,7 +4,7 @@ import {State} from "../common/State";
 
 @Injectable()
 export class FormService {
-  readonly states = [
+  private readonly _states = [
     new State('AL', 'Alabama'),
     new State('AK', 'Alaska'),
     new State('AZ', 'Arizona'),
@@ -56,55 +56,63 @@ export class FormService {
     new State('WI', 'Wisconsin'),
     new State('WY', 'Wyoming')
   ];
-  readonly degrees: string[] = [];
-  private years: number[];
-
-  private contactForm: FormGroup;
-  private workForm: FormGroup;
-  private edForm: FormGroup;
+  private readonly _years: number[];
 
   constructor() {
-  }
-
-  getContactForm(): FormGroup {
-    return this.contactForm;
-  }
-
-  saveContactForm(formGroup: FormGroup): void {
-    this.contactForm = formGroup;
-  }
-
-  getWorkForm(): FormGroup {
-    return this.workForm;
-  }
-
-  saveWorkForm(formGroup: FormGroup): void {
-    this.workForm = formGroup;
-  }
-
-
-  getEdForm(): FormGroup {
-    return this.edForm;
-  }
-
-  saveEdForm(formGroup: FormGroup) {
-    this.edForm = formGroup;
-  }
-
-  getStates(): State[] {
-    return this.states;
-  }
-
-  getYears(): number[] {
-    if (!this.years) {
-      let tempYears: number[] = [];
-      const currentYear: number = new Date().getFullYear();
-      for (let i = currentYear; i > currentYear - 50; i--) {
-        tempYears.push(i);
-      }
-      this.years = tempYears;
+    let tempYears: number[] = [];
+    const currentYear: number = new Date().getFullYear();
+    for (let i = currentYear; i > currentYear - 50; i--) {
+      tempYears.push(i);
     }
-    return this.years.slice();
+    this._years = tempYears;
+  }
+
+  private _contactForm: FormGroup;
+
+  get contactForm(): FormGroup {
+    return this._contactForm;
+  }
+
+  set contactForm(formGroup: FormGroup) {
+    this._contactForm = formGroup;
+  }
+
+  private _workForm: FormGroup;
+
+  get workForm(): FormGroup {
+    return this._workForm;
+  }
+
+  set workForm(formGroup: FormGroup) {
+    this._workForm = formGroup;
+  }
+
+  private _edForm: FormGroup;
+
+  get edForm(): FormGroup {
+    return this._edForm;
+  }
+
+  set edForm(formGroup: FormGroup) {
+    this._edForm = formGroup;
+  }
+
+  private _miscForm: FormGroup;
+
+  get miscForm(): FormGroup {
+    return this._miscForm;
+  }
+
+  set miscForm(value: FormGroup) {
+    this._miscForm = value;
+  }
+
+  get states(): State[] {
+    return this._states.slice();
+  }
+
+  get years(): number[] {
+    return this._years.slice();
   }
 
 }

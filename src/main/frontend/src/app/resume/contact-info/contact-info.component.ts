@@ -16,28 +16,32 @@ export class ContactInfoComponent implements OnInit, FormTab {
   constructor(private formService: FormService) {
   }
 
+  private static getContactForm(): FormGroup {
+    return new FormGroup({
+      "firstName": new FormControl(null, Validators.required),
+      "lastName": new FormControl(null, Validators.required),
+      "zip": new FormControl(null),
+      "city": new FormControl(null),
+      "state": new FormControl("", Validators.required),
+      "addLine1": new FormControl(null),
+      "addLine2": new FormControl(null),
+      "phone": new FormControl(null),
+      "email": new FormControl(null, Validators.email)
+    });
+  }
+
   ngOnInit() {
-    this.contactForm = this.formService.getContactForm();
+    this.contactForm = this.formService.contactForm;
 
     if (!this.contactForm) {
-      this.contactForm = new FormGroup({
-        "firstName": new FormControl(null, Validators.required),
-        "lastName": new FormControl(null, Validators.required),
-        "zip": new FormControl(null),
-        "city": new FormControl(null),
-        "state": new FormControl("", Validators.required),
-        "addLine1": new FormControl(null),
-        "addLine2": new FormControl(null),
-        "phone": new FormControl(null),
-        "email": new FormControl(null, Validators.email)
-      });
+      this.contactForm = ContactInfoComponent.getContactForm();
     }
 
-    this.states = this.formService.getStates();
+    this.states = this.formService.states;
   }
 
   saveForm(): void {
     console.log(this.contactForm);
-    this.formService.saveContactForm(this.contactForm);
+    this.formService.contactForm = this.contactForm;
   }
 }

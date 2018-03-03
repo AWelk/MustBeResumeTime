@@ -14,9 +14,6 @@ export class EducationComponent implements OnInit, FormTab {
   states: State[];
   years: number[];
 
-  constructor(private formService: FormService) {
-  }
-
   private static getInstitutionForm(): FormGroup {
     return new FormGroup({
       "institution": new FormControl(null),
@@ -29,23 +26,29 @@ export class EducationComponent implements OnInit, FormTab {
     });
   }
 
+  constructor(private formService: FormService) {
+  }
+
+  private static getInstitutionsForm(): FormGroup {
+    return new FormGroup({
+      "institutions": new FormArray([EducationComponent.getInstitutionForm()])
+    });
+  }
+
   ngOnInit() {
-    this.edForm = this.formService.getEdForm();
+    this.edForm = this.formService.edForm;
 
     if (!this.edForm) {
-
-      this.edForm = new FormGroup({
-        "institutions": new FormArray([EducationComponent.getInstitutionForm()])
-      });
+      this.edForm = EducationComponent.getInstitutionsForm();
     }
 
-    this.states = this.formService.getStates();
-    this.years = this.formService.getYears();
+    this.states = this.formService.states;
+    this.years = this.formService.years;
   }
 
   saveForm(): void {
     console.log(this.edForm);
-    this.formService.saveEdForm(this.edForm);
+    this.formService.edForm = this.edForm;
   }
 
   onAddInstitution(): void {

@@ -15,7 +15,7 @@ export class WorkExperienceComponent implements OnInit, FormTab {
   states: State[];
   years: number[];
 
-  constructor(private formService: FormService) {
+  constructor(private _formService: FormService) {
   }
 
   private static getWorkplaceForm(): FormGroup {
@@ -41,9 +41,26 @@ export class WorkExperienceComponent implements OnInit, FormTab {
     return new FormControl(null);
   }
 
+  private static getWorkExperienceForm(): FormGroup {
+    return new FormGroup({
+      "workplaces": new FormArray([WorkExperienceComponent.getWorkplaceForm()])
+    });
+  }
+
+  ngOnInit() {
+    this.workForm = this._formService.workForm;
+
+    if (!this.workForm) {
+      this.workForm = WorkExperienceComponent.getWorkExperienceForm();
+    }
+
+    this.states = this._formService.states;
+    this.years = this._formService.years;
+  }
+
   saveForm(): void {
     console.log(this.workForm);
-    this.formService.saveWorkForm(this.workForm);
+    this._formService.workForm = this.workForm;
   }
 
   onAddPosition(workplace: number): void {
@@ -64,20 +81,6 @@ export class WorkExperienceComponent implements OnInit, FormTab {
 
   onDeleteResponsibility(responsibility: number, workplace: number): void {
     (<FormArray>(<FormArray>this.workForm.get("workplaces")).at(workplace).get('responsibilities')).removeAt(responsibility);
-  }
-
-  ngOnInit() {
-    this.workForm = this.formService.getWorkForm();
-
-    if (!this.workForm) {
-
-      this.workForm = new FormGroup({
-        "workplaces": new FormArray([WorkExperienceComponent.getWorkplaceForm()])
-      });
-    }
-
-    this.states = this.formService.getStates();
-    this.years = this.formService.getYears();
   }
 
   onDeleteWorkplace(workplace: number) {
