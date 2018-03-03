@@ -15,8 +15,7 @@
     <a class="nav-link" style="cursor: pointer" (click)="onTabClick(3)" [ngClass]="{'active':activeTab===3}">Misc</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="cursor: pointer" (click)="onTabClick(4)"
-       [ngClass]="{'active':activeTab===4}">Custom</a>
+    <a class="nav-link" style="cursor: pointer" (click)="onTabClick(4)" [ngClass]="{'active':activeTab===4}">Review</a>
   </li>
 </ul>
 
@@ -24,4 +23,4 @@
 <app-work-experience *ngIf="activeTab===1" #activeTab></app-work-experience>
 <app-education *ngIf="activeTab===2" #activeTab></app-education>
 <app-misc *ngIf="activeTab===3" #activeTab></app-misc>
-<app-custom *ngIf="activeTab===4" #activeTab></app-custom>
+<app-review *ngIf="activeTab===4" #activeTab></app-review>

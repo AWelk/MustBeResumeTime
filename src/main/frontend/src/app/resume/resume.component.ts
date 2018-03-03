@@ -8,7 +8,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 export class ResumeComponent implements OnInit {
   @ViewChild('activeTab') contactTab: FormTab;
 
-  activeTab: number = 2;
+  activeTab: number = 0;
 
   constructor() {
   }

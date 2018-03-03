@@ -8,13 +8,13 @@ import {ContactInfoComponent} from './resume/contact-info/contact-info.component
 import {WorkExperienceComponent} from './resume/work-experience/work-experience.component';
 import {EducationComponent} from './resume/education/education.component';
 import {MiscComponent} from './resume/misc/misc.component';
-import {CustomComponent} from './resume/custom/custom.component';
 import {AdminComponent} from './admin/admin.component';
 import {LandingPageComponent} from './landing-page/landing-page.component';
 import {RouterModule, Routes} from "@angular/router";
 import {LoginComponent} from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FormService} from "./service/form.service";
+import {ReviewComponent} from './resume/review/review.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -32,10 +32,10 @@ const appRoutes: Routes = [
     WorkExperienceComponent,
     EducationComponent,
     MiscComponent,
-    CustomComponent,
     AdminComponent,
     LandingPageComponent,
-    LoginComponent
+    LoginComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,
