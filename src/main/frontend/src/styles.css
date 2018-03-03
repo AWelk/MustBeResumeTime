@@ -7,11 +7,11 @@ html {
   overflow-y: scroll;
 }
 
-.fa-plus-square {
+.fa-plus-circle {
   color: #28a745;
 }
 
-.fa-minus-square {
+.fa-trash {
   color: #dc3545;
 }
 

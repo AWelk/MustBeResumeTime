@@ -67,11 +67,11 @@
                           </div>
                         </div>
                         <div class="col-md-1">
-                          <span style="cursor: pointer" class="fa fa-plus-square fa-2x"
+                          <span style="cursor: pointer" class="fa fa-plus-circle fa-2x"
                                 (click)="onAddPosition(workplaceI)"
                                 *ngIf="positionI === 0; else deletePositionRow"></span>
                           <ng-template #deletePositionRow>
-                            <span style="cursor: pointer" class="fa fa-minus-square fa-2x"
+                            <span style="cursor: pointer" class="fa fa-trash fa-2x"
                                   (click)="onDeletePosition(positionI, workplaceI)"></span>
                           </ng-template>
                         </div>
