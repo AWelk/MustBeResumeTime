@@ -7,8 +7,12 @@ html {
   overflow-y: scroll;
 }
 
-.fa {
-  color: #007bff
+.fa-plus-square {
+  color: #218838;
+}
+
+.fa-minus-square {
+  color: #dc3545;
 }
 
 .item-group {
