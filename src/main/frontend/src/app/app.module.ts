@@ -13,9 +13,14 @@ import {LandingPageComponent} from './landing-page/landing-page.component';
 import {RouterModule, Routes} from "@angular/router";
 import {LoginComponent} from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {FormService} from "./service/form.service";
+import {FormsService} from "./service/forms.service";
 import {ReviewComponent} from './resume/review/review.component';
-import {ModalModule} from "ngx-bootstrap";
+import {ModalModule, TabsModule} from "ngx-bootstrap";
+import {ContactFormService} from "./service/contact-form.service";
+import {StaticDataService} from "./service/static-data.service";
+import {EdFormService} from "./service/ed-form.service";
+import {MiscFormService} from "./service/misc-form.service";
+import {WorkFormService} from "./service/work-form.service";
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -43,9 +48,16 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    TabsModule.forRoot()
   ],
-  providers: [FormService],
+  providers: [
+    FormsService,
+    ContactFormService,
+    EdFormService,
+    MiscFormService,
+    WorkFormService,
+    StaticDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

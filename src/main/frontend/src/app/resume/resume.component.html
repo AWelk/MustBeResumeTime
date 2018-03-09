@@ -1,26 +1,28 @@
-<ul class="nav nav-tabs justify-content-center">
-  <li class="nav-item">
-    <a class="nav-link" style="cursor: pointer" (click)="onTabClick(0)" [ngClass]="{'active':activeTab===0}">Contact
-      Info</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="cursor: pointer" (click)="onTabClick(1)" [ngClass]="{'active':activeTab===1}">Work
-      Experience</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="cursor: pointer" (click)="onTabClick(2)"
-       [ngClass]="{'active':activeTab===2}">Education</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="cursor: pointer" (click)="onTabClick(3)" [ngClass]="{'active':activeTab===3}">Misc</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="cursor: pointer" (click)="onTabClick(4)" [ngClass]="{'active':activeTab===4}">Review</a>
-  </li>
-</ul>
+<nav class="navbar">
+  <button (click)="onBack()" class="btn btn-primary" type="button"><span class="fa fa-angle-left"
+                                                                         aria-hidden="true"></span> Back
+  </button>
+  <button (click)="onLogout()" class="btn btn-danger" type="button"><span class="fa fa-sign-out"
+                                                                          aria-hidden="true"></span> Logout
+  </button>
+</nav>
 
-<app-contact-info *ngIf="activeTab===0" #activeTab></app-contact-info>
-<app-work-experience *ngIf="activeTab===1" #activeTab></app-work-experience>
-<app-education *ngIf="activeTab===2" #activeTab></app-education>
-<app-misc *ngIf="activeTab===3" #activeTab></app-misc>
-<app-review *ngIf="activeTab===4" #activeTab></app-review>
+<div>
+  <tabset>
+    <tab heading="Contact">
+      <app-contact-info></app-contact-info>
+    </tab>
+    <tab heading="Work Experience">
+      <app-work-experience></app-work-experience>
+    </tab>
+    <tab heading="Education">
+      <app-education></app-education>
+    </tab>
+    <tab heading="Misc">
+      <app-misc></app-misc>
+    </tab>
+    <tab heading="Review">
+      <app-review></app-review>
+    </tab>
+  </tabset>
+</div>

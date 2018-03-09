@@ -1,62 +1,33 @@
 import {Component, OnInit} from '@angular/core';
-import {FormTab} from "../resume.component";
-import {FormService} from "../../service/form.service";
 import {State} from "../../common/State";
-import {FormArray, FormControl, FormGroup} from "@angular/forms";
+import {FormGroup} from "@angular/forms";
+import {StaticDataService} from "../../service/static-data.service";
+import {EdFormService} from "../../service/ed-form.service";
 
 @Component({
   selector: 'app-education',
   templateUrl: './education.component.html',
   styleUrls: ['./education.component.css']
 })
-export class EducationComponent implements OnInit, FormTab {
+export class EducationComponent implements OnInit {
   edForm: FormGroup;
   states: State[];
   years: number[];
 
-  private static getInstitutionForm(): FormGroup {
-    return new FormGroup({
-      "institution": new FormControl(null),
-      "city": new FormControl(null),
-      "state": new FormControl(""),
-      "degree": new FormControl(""),
-      "startDate": new FormControl(""),
-      "endDate": new FormControl(""),
-      "achievements": new FormControl(null)
-    });
-  }
-
-  constructor(private formService: FormService) {
-  }
-
-  private static getInstitutionsForm(): FormGroup {
-    return new FormGroup({
-      "institutions": new FormArray([EducationComponent.getInstitutionForm()])
-    });
+  constructor(private _edFormService: EdFormService, private _dataService: StaticDataService) {
   }
 
   ngOnInit() {
-    this.edForm = this.formService.edForm;
-
-    if (!this.edForm) {
-      this.edForm = EducationComponent.getInstitutionsForm();
-    }
-
-    this.states = this.formService.states;
-    this.years = this.formService.years;
-  }
-
-  saveForm(): void {
-    console.log(this.edForm);
-    this.formService.edForm = this.edForm;
+    this.edForm = this._edFormService.getForm();
+    this.states = this._dataService.states;
+    this.years = this._dataService.years;
   }
 
   onAddInstitution(): void {
-    const institution: FormGroup = EducationComponent.getInstitutionForm();
-    (<FormArray>this.edForm.get('institutions')).insert(0, institution);
+    this._edFormService.addInstitution();
   }
 
   onDeleteInstitution(institution: number) {
-    (<FormArray>this.edForm.get('institutions')).removeAt(institution);
+    this._edFormService.deleteInstitution(institution);
   }
 }

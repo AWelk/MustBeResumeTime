@@ -1,94 +1,49 @@
 import {Component, OnInit} from '@angular/core';
-import {FormTab} from "../resume.component";
-import {FormArray, FormControl, FormGroup} from "@angular/forms";
+import {FormGroup} from "@angular/forms";
 import {State} from "../../common/State";
-import {FormService} from "../../service/form.service";
-import {AbstractControl} from "@angular/forms/src/model";
+import {WorkFormService} from "../../service/work-form.service";
+import {StaticDataService} from "../../service/static-data.service";
 
 @Component({
   selector: 'app-work-experience',
   templateUrl: './work-experience.component.html',
   styleUrls: ['./work-experience.component.css']
 })
-export class WorkExperienceComponent implements OnInit, FormTab {
+export class WorkExperienceComponent implements OnInit {
   workForm: FormGroup;
   states: State[];
   years: number[];
 
-  constructor(private _formService: FormService) {
-  }
-
-  private static getWorkplaceForm(): FormGroup {
-    return new FormGroup({
-      "employerName": new FormControl(null),
-      "city": new FormControl(null),
-      "state": new FormControl(''),
-      "positions": new FormArray([WorkExperienceComponent.getPositionForm()]),
-      "description": new FormControl(null),
-      "responsibilities": new FormArray([WorkExperienceComponent.getResponsibilityForm()])
-    });
-  }
-
-  private static getPositionForm(): AbstractControl {
-    return new FormGroup({
-      "position": new FormControl(null),
-      "startDate": new FormControl(""),
-      "endDate": new FormControl('')
-    });
-  }
-
-  private static getResponsibilityForm(): AbstractControl {
-    return new FormControl(null);
-  }
-
-  private static getWorkExperienceForm(): FormGroup {
-    return new FormGroup({
-      "workplaces": new FormArray([WorkExperienceComponent.getWorkplaceForm()])
-    });
+  constructor(private _workFormService: WorkFormService, private _dataService: StaticDataService) {
   }
 
   ngOnInit() {
-    this.workForm = this._formService.workForm;
-
-    if (!this.workForm) {
-      this.workForm = WorkExperienceComponent.getWorkExperienceForm();
-    }
-
-    this.states = this._formService.states;
-    this.years = this._formService.years;
-  }
-
-  saveForm(): void {
-    console.log(this.workForm);
-    this._formService.workForm = this.workForm;
+    this.workForm = this._workFormService.getForm();
+    this.states = this._dataService.states;
+    this.years = this._dataService.years;
   }
 
   onAddPosition(workplace: number): void {
-    const position: AbstractControl = WorkExperienceComponent.getPositionForm();
-    (<FormArray>(<FormArray>this.workForm.get("workplaces")).at(workplace).get('positions')).at(0).disable();
-    (<FormArray>(<FormArray>this.workForm.get("workplaces")).at(workplace).get('positions')).insert(0, position);
+    this._workFormService.addPosition(workplace);
   }
 
   onDeletePosition(position: number, workplace: number): void {
-    (<FormArray>(<FormArray>this.workForm.get("workplaces")).at(workplace).get('positions')).removeAt(position);
+    this._workFormService.deletePosition(position, workplace);
   }
 
   onAddResponsibility(workplace: number): void {
-    const responsibility: AbstractControl = WorkExperienceComponent.getResponsibilityForm();
-    (<FormArray>(<FormArray>this.workForm.get("workplaces")).at(workplace).get('responsibilities')).at(0).disable();
-    (<FormArray>(<FormArray>this.workForm.get("workplaces")).at(workplace).get('responsibilities')).insert(0, responsibility);
+    this._workFormService.addResponsibility(workplace);
   }
 
   onDeleteResponsibility(responsibility: number, workplace: number): void {
-    (<FormArray>(<FormArray>this.workForm.get("workplaces")).at(workplace).get('responsibilities')).removeAt(responsibility);
-  }
-
-  onDeleteWorkplace(workplace: number) {
-    (<FormArray>this.workForm.get('workplaces')).removeAt(workplace);
+    this._workFormService.deleteResponsibility(responsibility, workplace);
   }
 
   onAddWorkPlace(): void {
-    const workplace: FormGroup = WorkExperienceComponent.getWorkplaceForm();
-    (<FormArray>this.workForm.get('workplaces')).insert(0, workplace);
+    this._workFormService.addWorkPlace()
+  }
+
+  onDeleteWorkplace(workplace: number) {
+    this._workFormService.deleteWorkplace(workplace);
   }
 }

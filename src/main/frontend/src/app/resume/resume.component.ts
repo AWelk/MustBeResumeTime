@@ -1,4 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-resume',
@@ -6,22 +7,21 @@ import {Component, OnInit, ViewChild} from '@angular/core';
   styleUrls: ['./resume.component.css']
 })
 export class ResumeComponent implements OnInit {
-  @ViewChild('activeTab') contactTab: FormTab;
 
-  activeTab: number = 0;
-
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
 
   }
 
-  onTabClick(tab: number) {
-    this.contactTab.saveForm();
-    this.activeTab = tab;
+  onBack(): void {
+    this.router.navigate(['resume']);
   }
 
+  onLogout(): void {
+    this.router.navigate(['']);
+  }
 }
 
 export interface FormTab {

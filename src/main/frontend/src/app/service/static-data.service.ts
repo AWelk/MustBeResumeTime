@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
-import {FormGroup} from "@angular/forms";
 import {State} from "../common/State";
 
 @Injectable()
-export class FormService {
+export class StaticDataService {
   private readonly _states = [
     new State('AL', 'Alabama'),
     new State('AK', 'Alaska'),
@@ -67,52 +66,11 @@ export class FormService {
     this._years = tempYears;
   }
 
-  private _contactForm: FormGroup;
-
-  get contactForm(): FormGroup {
-    return this._contactForm;
+  get states() {
+    return this._states;
   }
 
-  set contactForm(formGroup: FormGroup) {
-    this._contactForm = formGroup;
+  get years() {
+    return this._years;
   }
-
-  private _workForm: FormGroup;
-
-  get workForm(): FormGroup {
-    return this._workForm;
-  }
-
-  set workForm(formGroup: FormGroup) {
-    this._workForm = formGroup;
-  }
-
-  private _edForm: FormGroup;
-
-  get edForm(): FormGroup {
-    return this._edForm;
-  }
-
-  set edForm(formGroup: FormGroup) {
-    this._edForm = formGroup;
-  }
-
-  private _miscForm: FormGroup;
-
-  get miscForm(): FormGroup {
-    return this._miscForm;
-  }
-
-  set miscForm(value: FormGroup) {
-    this._miscForm = value;
-  }
-
-  get states(): State[] {
-    return this._states.slice();
-  }
-
-  get years(): number[] {
-    return this._years.slice();
-  }
-
 }
