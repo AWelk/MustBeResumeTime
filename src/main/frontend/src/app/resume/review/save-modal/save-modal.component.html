@@ -1,0 +1,14 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Save Resume</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form class="form-inline justify-content-center">
+    <label class="sr-only" for="inlineFormInputName2">Save As</label>
+    <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Save As...">
+    <button type="button" class="btn btn-primary mb-2 mr-sm-2" (click)="onSaveForm()">Save</button>
+    <button type="button" class="btn btn-danger mb-2" (click)="modalRef.hide()">Cancel</button>
+  </form>
+</div>

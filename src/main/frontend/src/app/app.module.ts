@@ -21,6 +21,7 @@ import {StaticDataService} from "./service/static-data.service";
 import {EdFormService} from "./service/ed-form.service";
 import {MiscFormService} from "./service/misc-form.service";
 import {WorkFormService} from "./service/work-form.service";
+import {SaveModalComponent} from './resume/review/save-modal/save-modal.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
     AdminComponent,
     LandingPageComponent,
     LoginComponent,
-    ReviewComponent
+    ReviewComponent,
+    SaveModalComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,8 @@ const appRoutes: Routes = [
     MiscFormService,
     WorkFormService,
     StaticDataService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [SaveModalComponent]
 })
 export class AppModule {
 }
