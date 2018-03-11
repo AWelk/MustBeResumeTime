@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {AbstractControl, FormArray, FormControl, FormGroup} from "@angular/forms";
-import {FormService} from "./FormService";
+import {AbstractControl, FormArray, FormControl, FormGroup} from '@angular/forms';
+import {FormService} from './FormService';
 
 @Injectable()
 export class MiscFormService implements FormService {
@@ -13,9 +13,9 @@ export class MiscFormService implements FormService {
 
   private static initMiscForm(): FormGroup {
     return new FormGroup({
-      "skills": new FormArray([MiscFormService.getSkillForm()]),
-      "expertise": new FormArray([MiscFormService.getExpertiseForm()])
-    })
+      'skills': new FormArray([MiscFormService.getSkillForm()]),
+      'expertise': new FormArray([MiscFormService.getExpertiseForm()])
+    });
   }
 
   private static getSkillForm(): AbstractControl {

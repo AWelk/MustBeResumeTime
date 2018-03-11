@@ -1,6 +1,6 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
-import {BsModalRef, BsModalService} from "ngx-bootstrap";
-import {SaveModalComponent} from "./save-modal/save-modal.component";
+import {BsModalRef, BsModalService} from 'ngx-bootstrap';
+import {SaveModalComponent} from './save-modal/save-modal.component';
 
 @Component({
   selector: 'app-review',

@@ -1,4 +1,4 @@
-import {Workplace} from "./workplace";
+import {Workplace} from './workplace';
 
 export class WorkForm {
 

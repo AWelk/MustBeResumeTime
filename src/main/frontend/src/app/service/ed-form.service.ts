@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {FormArray, FormControl, FormGroup} from "@angular/forms";
-import {FormService} from "./FormService";
+import {FormArray, FormControl, FormGroup} from '@angular/forms';
+import {FormService} from './FormService';
 
 @Injectable()
 export class EdFormService implements FormService {
@@ -13,19 +13,19 @@ export class EdFormService implements FormService {
 
   private static initInstitutionsForm(): FormGroup {
     return new FormGroup({
-      "institutions": new FormArray([EdFormService.getInstitutionForm()])
+      'institutions': new FormArray([EdFormService.getInstitutionForm()])
     });
   }
 
   private static getInstitutionForm(): FormGroup {
     return new FormGroup({
-      "institution": new FormControl(null),
-      "city": new FormControl(null),
-      "state": new FormControl(""),
-      "degree": new FormControl(""),
-      "startDate": new FormControl(""),
-      "endDate": new FormControl(""),
-      "achievements": new FormControl(null)
+      'institution': new FormControl(null),
+      'city': new FormControl(null),
+      'state': new FormControl(''),
+      'degree': new FormControl(''),
+      'startDate': new FormControl(''),
+      'endDate': new FormControl(''),
+      'achievements': new FormControl(null)
     });
   }
 

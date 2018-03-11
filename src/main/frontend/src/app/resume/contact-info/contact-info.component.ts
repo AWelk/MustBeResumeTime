@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup} from "@angular/forms";
-import {State} from "../../common/state";
-import {StaticDataService} from "../../service/static-data.service";
-import {ContactFormService} from "../../service/contact-form.service";
+import {FormGroup} from '@angular/forms';
+import {State} from '../../common/state';
+import {StaticDataService} from '../../service/static-data.service';
+import {ContactFormService} from '../../service/contact-form.service';
 
 @Component({
   selector: 'app-contact-info',

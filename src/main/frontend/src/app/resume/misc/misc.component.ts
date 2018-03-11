@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup} from "@angular/forms";
-import {MiscFormService} from "../../service/misc-form.service";
+import {FormGroup} from '@angular/forms';
+import {MiscFormService} from '../../service/misc-form.service';
 
 @Component({
   selector: 'app-misc',

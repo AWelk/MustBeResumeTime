@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormsService} from "../../../service/forms.service";
-import {BsModalRef} from "ngx-bootstrap";
+import {FormsService} from '../../../service/forms.service';
+import {BsModalRef} from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-save-modal',

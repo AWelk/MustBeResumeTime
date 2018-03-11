@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {State} from "../common/state";
+import {State} from '../common/state';
 
 @Injectable()
 export class StaticDataService {
@@ -58,7 +58,7 @@ export class StaticDataService {
   private readonly _years: number[];
 
   constructor() {
-    let tempYears: number[] = [];
+    const tempYears: number[] = [];
     const currentYear: number = new Date().getFullYear();
     for (let i = currentYear; i > currentYear - 50; i--) {
       tempYears.push(i);

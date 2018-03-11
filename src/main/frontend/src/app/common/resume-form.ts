@@ -1,7 +1,7 @@
-import {ContactForm} from "./contact-form";
-import {WorkForm} from "./work-form";
-import {EdForm} from "./ed-form";
-import {MiscForm} from "./misc-form";
+import {ContactForm} from './contact-form';
+import {WorkForm} from './work-form';
+import {EdForm} from './ed-form';
+import {MiscForm} from './misc-form';
 
 export class ResumeForm {
 

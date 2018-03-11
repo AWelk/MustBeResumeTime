@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {FormsService} from "../service/forms.service";
-import {FormId} from "../common/form-id";
+import {Router} from '@angular/router';
+import {FormsService} from '../service/forms.service';
+import {FormId} from '../common/form-id';
 
 @Component({
   selector: 'app-admin',
@@ -29,10 +29,10 @@ export class AdminComponent implements OnInit {
   }
 
   onEditForm(formId: FormId): void {
-    console.log("Editing form " + formId.name);
+    console.log('Editing form ' + formId.name);
   }
 
   onPrintForm(formId: FormId): void {
-    console.log("Printing form " + formId.name);
+    console.log('Printing form ' + formId.name);
   }
 }
