@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {State} from "../common/State";
+import {State} from "../common/state";
 
 @Injectable()
 export class StaticDataService {
