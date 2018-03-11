@@ -4,26 +4,45 @@ import {ContactFormService} from "./contact-form.service";
 import {EdFormService} from "./ed-form.service";
 import {MiscFormService} from "./misc-form.service";
 import {WorkFormService} from "./work-form.service";
+import {FormService} from "./FormService";
 
 @Injectable()
 export class FormsService {
 
-  constructor(private _contactFormService: ContactFormService, private _edFormService: EdFormService, private _miscFormService: MiscFormService, private _workFormService: WorkFormService) {
+  private _contactFormService: FormService;
+  private _edFormService: FormService;
+  private _miscFormService: FormService;
+  private _workFormService: FormService;
+
+  constructor(contactFormService: ContactFormService, edFormService: EdFormService,
+              miscFormService: MiscFormService, workFormService: WorkFormService) {
+    this._contactFormService = contactFormService;
+    this._edFormService = edFormService;
+    this._miscFormService = miscFormService;
+    this._workFormService = workFormService;
   }
 
-  get contactForm(): FormGroup {
+  private get contactForm(): FormGroup {
     return this._contactFormService.getForm();
   }
 
-  get workForm(): FormGroup {
+  private get workForm(): FormGroup {
     return this._workFormService.getForm();
   }
 
-  get edForm(): FormGroup {
+  private get edForm(): FormGroup {
     return this._edFormService.getForm();
   }
 
-  get miscForm(): FormGroup {
+  private get miscForm(): FormGroup {
     return this._miscFormService.getForm();
+  }
+
+  saveForm(): void {
+    // this.contactForm.
+    console.log(this.contactForm.getRawValue());
+    console.log(this.workForm.getRawValue());
+    console.log(this.edForm.getRawValue());
+    console.log(this.miscForm.getRawValue());
   }
 }
