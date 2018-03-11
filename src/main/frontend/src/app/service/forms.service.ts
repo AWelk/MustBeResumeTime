@@ -5,6 +5,11 @@ import {EdFormService} from "./ed-form.service";
 import {MiscFormService} from "./misc-form.service";
 import {WorkFormService} from "./work-form.service";
 import {FormService} from "./FormService";
+import {ContactForm} from "../common/contact-form";
+import {WorkForm} from "../common/work-form";
+import {EdForm} from "../common/ed-form";
+import {MiscForm} from "../common/misc-form";
+import {ResumeForm} from "../common/resume-form";
 
 @Injectable()
 export class FormsService {
@@ -39,10 +44,12 @@ export class FormsService {
   }
 
   saveForm(): void {
-    // this.contactForm.
-    console.log(this.contactForm.getRawValue());
-    console.log(this.workForm.getRawValue());
-    console.log(this.edForm.getRawValue());
-    console.log(this.miscForm.getRawValue());
+    let contactForm: ContactForm = <ContactForm>this.contactForm.getRawValue();
+    let workForm: WorkForm = <WorkForm>this.workForm.getRawValue();
+    let edForm: EdForm = <EdForm>this.edForm.getRawValue();
+    let miscForm: MiscForm = <MiscForm>this.miscForm.getRawValue();
+
+    let resumeForm: ResumeForm = new ResumeForm(contactForm, workForm, edForm, miscForm);
+    console.log(resumeForm);
   }
 }
