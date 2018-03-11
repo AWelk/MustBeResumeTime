@@ -10,6 +10,7 @@ import {WorkForm} from "../common/work-form";
 import {EdForm} from "../common/ed-form";
 import {MiscForm} from "../common/misc-form";
 import {ResumeForm} from "../common/resume-form";
+import {FormId} from "../common/form-id";
 
 @Injectable()
 export class FormsService {
@@ -50,6 +51,15 @@ export class FormsService {
     let miscForm: MiscForm = <MiscForm>this.miscForm.getRawValue();
 
     let resumeForm: ResumeForm = new ResumeForm(contactForm, workForm, edForm, miscForm);
+    console.log("Saving form to database");
     console.log(resumeForm);
+  }
+
+  getAllForms(): FormId[] {
+    return [
+      new FormId(1, "Alex Resume", "3/10/2018"),
+      new FormId(2, "Morgan Resume", "3/11/2018"),
+      new FormId(3, "Test Resume", "2/10/2018")
+    ];
   }
 }

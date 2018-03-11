@@ -17,23 +17,11 @@
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <th>Resume1</th>
-    <td>2/16/2018</td>
-    <td><span class="glyphicon glyphicon-pencil"></span></td>
-    <td><span class="glyphicon glyphicon-print"></span></td>
-  </tr>
-  <tr>
-    <th>Resume2</th>
-    <td>2/16/2018</td>
-    <td><span class="glyphicon glyphicon-pencil"></span></td>
-    <td><span class="glyphicon glyphicon-print"></span></td>
-  </tr>
-  <tr>
-    <th>Resume3</th>
-    <td>2/16/2018</td>
-    <td><span class="glyphicon glyphicon-pencil"></span></td>
-    <td><span class="glyphicon glyphicon-print"></span></td>
+  <tr *ngFor="let resume of getAllForms()">
+    <th>{{resume.name}}</th>
+    <td>{{resume.savedDate}}</td>
+    <td><i class="fa fa-pencil" style="cursor: pointer" aria-hidden="true" (click)="onEditForm(resume)"></i></td>
+    <td><i class="fa fa-print" style="cursor: pointer" aria-hidden="true" (click)="onPrintForm(resume)"></i></td>
   </tr>
   </tbody>
 </table>
