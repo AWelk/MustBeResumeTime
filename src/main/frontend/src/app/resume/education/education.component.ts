@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {State} from "../../common/State";
+import {State} from "../../common/state";
 import {FormGroup} from "@angular/forms";
 import {StaticDataService} from "../../service/static-data.service";
 import {EdFormService} from "../../service/ed-form.service";
