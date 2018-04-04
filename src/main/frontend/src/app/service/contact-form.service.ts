@@ -1,18 +1,22 @@
 import {Injectable} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {FormService} from './FormService';
+import {Observable} from 'rxjs/Observable';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {ContactForm} from '../common/contact-form';
 
 @Injectable()
-export class ContactFormService implements FormService {
+export class ContactFormService {
 
   private _contactForm: FormGroup;
+  private _formSub$: BehaviorSubject<FormGroup>;
 
   constructor() {
     this._contactForm = ContactFormService.initContactForm();
+    this._formSub$ = new BehaviorSubject<FormGroup>(this._contactForm);
   }
 
-  private static initContactForm(): FormGroup {
-    return new FormGroup({
+  private static initContactForm(contactForm?: ContactForm): FormGroup {
+    const form: FormGroup = new FormGroup({
       'firstName': new FormControl(null, Validators.required),
       'lastName': new FormControl(null, Validators.required),
       'zip': new FormControl(null),
@@ -23,13 +27,25 @@ export class ContactFormService implements FormService {
       'phone': new FormControl(null),
       'email': new FormControl(null, Validators.email)
     });
+    if (contactForm) {
+      form.setValue(contactForm);
+    }
+    return form;
   }
 
-  getForm(): FormGroup {
-    return this._contactForm;
+  getForm(): Observable<FormGroup> {
+    return this._formSub$.asObservable();
   }
 
   resetForm(): void {
     this._contactForm = ContactFormService.initContactForm();
+    this._formSub$.next(this._contactForm);
+  }
+
+  loadForm(contactForm: ContactForm): void {
+    const form: FormGroup = ContactFormService.initContactForm();
+    form.setValue(contactForm);
+    this._contactForm = form;
+    this._formSub$.next(this._contactForm);
   }
 }

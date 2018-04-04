@@ -1,21 +1,27 @@
-import {Component, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {FormArray, FormGroup} from '@angular/forms';
 import {MiscFormService} from '../../service/misc-form.service';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-misc',
   templateUrl: './misc.component.html',
   styleUrls: ['./misc.component.css']
 })
-export class MiscComponent implements OnInit {
+export class MiscComponent implements OnInit, OnDestroy {
 
+  private _miscSub$: Subscription;
   miscForm: FormGroup;
 
   constructor(private _miscFormService: MiscFormService) {
   }
 
-  ngOnInit() {
-    this.miscForm = this._miscFormService.getForm();
+  get skillsArray(): FormArray {
+    return <FormArray>this.miscForm.get('skills');
+  }
+
+  get expertiesArray(): FormArray {
+    return <FormArray>this.miscForm.get('expertise');
   }
 
   onAddSkill(): void {
@@ -32,5 +38,13 @@ export class MiscComponent implements OnInit {
 
   onDeleteExpertise(expertise: number) {
     this._miscFormService.deleteExpertise(expertise);
+  }
+
+  ngOnInit() {
+    this._miscSub$ = this._miscFormService.getForm().subscribe(form => this.miscForm = form);
+  }
+
+  ngOnDestroy(): void {
+    this._miscSub$.unsubscribe();
   }
 }

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormsService} from '../../../service/forms.service';
 import {BsModalRef} from 'ngx-bootstrap';
+import {ResumeService} from '../../../service/resume.service';
 
 @Component({
   selector: 'app-save-modal',
@@ -8,16 +8,17 @@ import {BsModalRef} from 'ngx-bootstrap';
   styleUrls: ['./save-modal.component.css']
 })
 export class SaveModalComponent implements OnInit {
+  formName: string;
 
-  constructor(private _formsService: FormsService, public modalRef: BsModalRef) {
+  constructor(private _resumeService: ResumeService, public modalRef: BsModalRef) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.formName = this._resumeService.getLoadedForm();
   }
 
   onSaveForm(): void {
-    this._formsService.saveForm();
-    this.modalRef.hide();
+    this._resumeService.saveForm(this.formName).subscribe(() => this.modalRef.hide());
   }
 
 }

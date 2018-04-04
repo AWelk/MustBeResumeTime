@@ -12,7 +12,7 @@
       </div>
       <ul class="list-group">
         <li class="list-group-item"
-            *ngFor="let skill of miscForm.get('skills').controls; let skillI = index">
+            *ngFor="let skill of skillsArray.controls; let skillI = index">
           <div class="row align-items-center align-content-between">
             <div class="col-md-11">
               <input type="text" class="form-control" placeholder="Enter skill"
@@ -40,7 +40,7 @@
       </div>
       <ul class="list-group">
         <li class="list-group-item"
-            *ngFor="let expertise of miscForm.get('expertise').controls; let expertiseI = index">
+            *ngFor="let expertise of expertiesArray.controls; let expertiseI = index">
           <div class="row align-items-center align-content-between">
             <div class="col-md-11">
               <input type="text" class="form-control" placeholder="Enter expertise"

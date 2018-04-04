@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {ResumeService} from '../service/resume.service';
 
 @Component({
   selector: 'app-resume',
@@ -8,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class ResumeComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private _resumeService: ResumeService) {
   }
 
   ngOnInit() {
@@ -16,14 +17,16 @@ export class ResumeComponent implements OnInit {
   }
 
   onBack(): void {
+    this.resetForm();
     this.router.navigate(['resume']);
   }
 
   onLogout(): void {
+    this.resetForm();
     this.router.navigate(['']);
   }
-}
 
-export interface FormTab {
-  saveForm(): void;
+  private resetForm(): void {
+    this._resumeService.resetForms();
+  }
 }

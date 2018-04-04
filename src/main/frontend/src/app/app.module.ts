@@ -22,12 +22,16 @@ import {EdFormService} from './service/ed-form.service';
 import {MiscFormService} from './service/misc-form.service';
 import {WorkFormService} from './service/work-form.service';
 import {SaveModalComponent} from './resume/review/save-modal/save-modal.component';
+import {HttpClientModule} from '@angular/common/http';
+import {ResumeService} from './service/resume.service';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'resume', component: LandingPageComponent},
   {path: 'create', component: ResumeComponent},
-  {path: 'load', component: AdminComponent}
+  {path: 'edit', component: ResumeComponent},
+  {path: 'load', component: AdminComponent},
+  {path: '**', redirectTo: ''}
 ];
 
 
@@ -51,7 +55,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
     ModalModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    HttpClientModule
   ],
   providers: [
     FormsService,
@@ -59,7 +64,8 @@ const appRoutes: Routes = [
     EdFormService,
     MiscFormService,
     WorkFormService,
-    StaticDataService],
+    StaticDataService,
+    ResumeService],
   bootstrap: [AppComponent],
   entryComponents: [SaveModalComponent]
 })

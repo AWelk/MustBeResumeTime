@@ -1,27 +1,31 @@
 <nav class="navbar">
-  <button (click)="onBack()" class="btn btn-primary" type="button"><span class="fa fa-angle-left"
-                                                                         aria-hidden="true"></span> Back
+  <button (click)="onBack()" class="btn btn-primary" type="button"><span class="fa fa-home"
+                                                                         aria-hidden="true"></span> Home
   </button>
   <button (click)="onLogout()" class="btn btn-danger" type="button"><span class="fa fa-sign-out"
                                                                           aria-hidden="true"></span> Logout
   </button>
 </nav>
 
-<table class="table">
+<table class="table table-striped">
   <thead>
   <tr>
     <th scope="col">Resume</th>
-    <th scope="col">Saved Date</th>
+    <th scope="col">Created</th>
+    <th scope="col">Edited</th>
     <th scope="col">Edit</th>
     <th scope="col">Print</th>
+    <th scope="col">Delete</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let resume of getAllForms()">
-    <th>{{resume.name}}</th>
-    <td>{{resume.savedDate}}</td>
+  <tr *ngFor="let resume of forms">
+    <td>{{resume.name}}</td>
+    <td>{{resume.createdOn | date:'short'}}</td>
+    <td>{{resume.editedOn | date:'short'}}</td>
     <td><i class="fa fa-pencil" style="cursor: pointer" aria-hidden="true" (click)="onEditForm(resume)"></i></td>
     <td><i class="fa fa-print" style="cursor: pointer" aria-hidden="true" (click)="onPrintForm(resume)"></i></td>
+    <td><i class="fa fa-trash" style="cursor: pointer" aria-hidden="true" (click)="onDeleteForm(resume)"></i></td>
   </tr>
   </tbody>
 </table>

@@ -1,8 +1,8 @@
 export class State {
-  readonly abbreviation: String;
-  readonly name: String;
+  readonly abbreviation: string;
+  readonly name: string;
 
-  constructor(abbreviation: String, name: String) {
+  constructor(abbreviation: string, name: string) {
     this.abbreviation = abbreviation;
     this.name = name;
   }

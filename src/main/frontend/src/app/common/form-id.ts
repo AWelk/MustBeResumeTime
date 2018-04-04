@@ -1,17 +1,9 @@
 export class FormId {
+  public createdOn: Date;
+  public editedOn: Date;
 
-  constructor(private _id: number, private _name: String, private _savedDate: String) {
-  }
-
-  get id(): number {
-    return this._id;
-  }
-
-  get name(): String {
-    return this._name;
-  }
-
-  get savedDate(): String {
-    return this._savedDate;
+  constructor(public id: string, public name: string, createdOn: number, editedOn: number) {
+    this.createdOn = new Date(createdOn);
+    this.editedOn = new Date(editedOn);
   }
 }

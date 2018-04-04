@@ -1,0 +1,7 @@
+th ~ th {
+  text-align: center;
+}
+
+td ~ td {
+  text-align: center;
+}
