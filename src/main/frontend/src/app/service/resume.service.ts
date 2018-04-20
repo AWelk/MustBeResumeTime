@@ -77,4 +77,20 @@ export class ResumeService {
     return this._loadedForm;
   }
 
+  printForm(): Observable<Blob> {
+    const contactForm: ContactForm = <ContactForm>this._contactForm.value;
+    const edForm: EdForm = <EdForm>this._edForm.value;
+    const workForm: WorkForm = <WorkForm>this._workForm.value;
+    const miscForm: MiscForm = <MiscForm>this._miscForm.value;
+
+    const date: Date = new Date();
+    const formDetail: FormDetail = new FormDetail('void', date, date, contactForm, workForm, edForm, miscForm);
+    return this._formsService.printForm(formDetail);
+  }
+
+  getResumeSaveName(): string {
+    const contact: ContactForm = <ContactForm>this._contactForm.value;
+    const date: Date = new Date();
+    return contact.firstName + ' ' + contact.lastName + ' - ' + date.toLocaleString();
+  }
 }

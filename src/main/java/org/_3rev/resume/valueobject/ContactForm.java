@@ -4,6 +4,7 @@ public class ContactForm {
 
     private String firstName;
     private String lastName;
+    private String objective;
     private String addLine1;
     private String addLine2;
     private String city;
@@ -16,9 +17,10 @@ public class ContactForm {
         super();
     }
 
-    public ContactForm(String firstName, String lastName, String addLine1, String addLine2, String city, String state, String zip, String phone, String email) {
+    public ContactForm(String firstName, String lastName, String objective, String addLine1, String addLine2, String city, String state, String zip, String phone, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.objective = objective;
         this.addLine1 = addLine1;
         this.addLine2 = addLine2;
         this.city = city;
@@ -42,6 +44,14 @@ public class ContactForm {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getObjective() {
+        return objective;
+    }
+
+    public void setObjective(String objective) {
+        this.objective = objective;
     }
 
     public String getAddLine1() {

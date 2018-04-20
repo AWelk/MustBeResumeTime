@@ -1,5 +1,6 @@
 <button type="button" class="btn btn-primary btn-lg btn-block" (click)="openSaveModal()">Save Resume</button>
-<button type="button" class="btn btn-secondary btn-lg btn-block" (click)="openModal(printModal)">Print Resume</button>
+<button type="button" class="btn btn-secondary btn-lg btn-block" (click)="printResume()">Print Resume</button>
+<a class="download-zip-link" #downloadZipLink></a>
 
 <ng-template #printModal>
   <div class="modal-header">

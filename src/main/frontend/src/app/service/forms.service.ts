@@ -25,4 +25,8 @@ export class FormsService {
   loadForm(formId: FormId): Observable<FormDetail> {
     return this.http.get<FormDetail>('/api/resumes/' + formId.id);
   }
+
+  printForm(formDetail: FormDetail): Observable<Blob> {
+    return this.http.post<Blob>('/api/resumes/print', formDetail, {responseType: 'blob' as 'json'});
+  }
 }
