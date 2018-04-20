@@ -23,10 +23,9 @@ public class TemplateCreator {
 
     private static final int TITLE = 0;
     private static final int CONTACT = 1;
-    private static final int ABOUT = 2;
-    private static final int SKILLS = 5;
-    private static final int WORK = 9;
-    private static final int ED = 14;
+    private static final int SKILLS = 4;
+    private static final int WORK = 8;
+    private static final int ED = 13;
     private static final int ED_LENGTH = 3;
     private static final int WORK_LENGTH = 4;
     private static File file;
@@ -69,7 +68,6 @@ public class TemplateCreator {
         setEd();
         setWork();
         setSkills();
-        setAbout();
         setContact(parts.get(1), detail);
         setTitle(parts.get(0), detail);
 
@@ -78,16 +76,6 @@ public class TemplateCreator {
         wordMLPackage.save(file);
 
         return file;
-    }
-
-    private void setAbout() {
-        String objective = detail.getContactForm().getObjective();
-        if (StringUtils.isEmpty(objective)) {
-            parts.remove(ABOUT);
-            return;
-        }
-
-        setParagraphText(parts.get(ABOUT), objective);
     }
 
     private void setSkills() {

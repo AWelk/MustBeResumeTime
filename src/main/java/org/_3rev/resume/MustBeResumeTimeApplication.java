@@ -38,7 +38,7 @@ public class MustBeResumeTimeApplication {
     }
 
     private ContactForm getContactForm() {
-        return new ContactForm(randString(), randString(), randString(), randString(), randString(), randString(), randString(), randString(), randString(), randString());
+        return new ContactForm(randString(), randString(), randString(), randString(), randString(), randString(), randString(), randString(), randString());
     }
 
     private EdForm getEdForm() {

@@ -19,7 +19,6 @@ export class ContactFormService {
     const form: FormGroup = new FormGroup({
       'firstName': new FormControl(null, Validators.required),
       'lastName': new FormControl(null, Validators.required),
-      'objective': new FormControl(null),
       'zip': new FormControl(null),
       'city': new FormControl(null),
       'state': new FormControl('', Validators.required),
