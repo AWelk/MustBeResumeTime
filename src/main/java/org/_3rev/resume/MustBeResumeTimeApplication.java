@@ -79,7 +79,7 @@ public class MustBeResumeTimeApplication {
         int num = new Random().nextInt(3) + 1;
         List<Institution> ints = new ArrayList<>();
         for (int i = 0; i < num; i++) {
-            ints.add(new Institution(randString(), randString(), randString(), randString(), randString(), randString(), randString()));
+            ints.add(new Institution(randString(), randString(), randString(), randString(), randString()));
         }
         return ints;
     }

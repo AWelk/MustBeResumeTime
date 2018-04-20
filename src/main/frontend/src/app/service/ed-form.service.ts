@@ -44,8 +44,6 @@ export class EdFormService {
       'city': new FormControl(null),
       'state': new FormControl(''),
       'degree': new FormControl(''),
-      'startDate': new FormControl(''),
-      'endDate': new FormControl(''),
       'achievements': new FormControl(null)
     });
     if (institution) {

@@ -303,7 +303,7 @@ public class TemplateCreator {
     }
 
     private void setDegree(P degree, Institution institution) {
-        setParagraphText(degree, institution.getDegree() + " (" + institution.getStartDate() + " - " + institution.getEndDate() + ")");
+        setParagraphText(degree, institution.getDegree());
     }
 
     private void setSchoolDescription(P description, Institution institution) {

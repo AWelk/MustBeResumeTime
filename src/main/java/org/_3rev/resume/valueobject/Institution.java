@@ -6,21 +6,17 @@ public class Institution {
     private String city;
     private String state;
     private String degree;
-    private String startDate;
-    private String endDate;
     private String achievements;
 
     public Institution() {
         super();
     }
 
-    public Institution(String institution, String city, String state, String degree, String startDate, String endDate, String achievements) {
+    public Institution(String institution, String city, String state, String degree, String achievements) {
         this.institution = institution;
         this.city = city;
         this.state = state;
         this.degree = degree;
-        this.startDate = startDate;
-        this.endDate = endDate;
         this.achievements = achievements;
     }
 
@@ -54,22 +50,6 @@ public class Institution {
 
     public void setDegree(String degree) {
         this.degree = degree;
-    }
-
-    public String getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
-    public String getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
     }
 
     public String getAchievements() {
