@@ -15,10 +15,13 @@ export class ReviewComponent implements OnInit, OnDestroy {
   @ViewChild('downloadZipLink')
   private downloadZipLink: ElementRef;
 
+  public isDownloading: boolean;
+
   constructor(private _modalService: BsModalService, private _resumeService: ResumeService) {
   }
 
   ngOnInit() {
+    this.isDownloading = false;
   }
 
   openSaveModal(): void {
@@ -32,6 +35,7 @@ export class ReviewComponent implements OnInit, OnDestroy {
   printResume(): void {
     const name: string = this._resumeService.getResumeSaveName();
     this._printSub$ = this._resumeService.printForm().subscribe(blob => {
+      this.isDownloading = false;
       const url = window.URL.createObjectURL(blob);
       const link = this.downloadZipLink.nativeElement;
       link.href = url;
@@ -39,6 +43,7 @@ export class ReviewComponent implements OnInit, OnDestroy {
       link.click();
       window.URL.revokeObjectURL(url);
     });
+    this.isDownloading = true;
   }
 
   ngOnDestroy(): void {
