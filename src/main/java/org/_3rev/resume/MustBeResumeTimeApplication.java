@@ -4,6 +4,7 @@ import org._3rev.resume.dao.ResumeDao;
 import org._3rev.resume.dao.StateDao;
 import org._3rev.resume.valueobject.*;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +15,9 @@ import java.util.*;
 @SpringBootApplication
 public class MustBeResumeTimeApplication {
 
+    @Value("${devmode}")
+    private String devMode;
+
     public static void main(String[] args) {
         SpringApplication.run(MustBeResumeTimeApplication.class, args);
     }
@@ -21,11 +25,14 @@ public class MustBeResumeTimeApplication {
     @Bean
     CommandLineRunner init(ResumeDao resumeDao, StateDao stateDao) {
         return args -> {
-            resumeDao.deleteAll();
 
-            int num = new Random().nextInt(7) + 3;
-            for (int i = 0; i < num; i++) {
-                resumeDao.save(getRandResume());
+            if (Boolean.parseBoolean(devMode)) {
+                resumeDao.deleteAll();
+
+                int num = new Random().nextInt(7) + 3;
+                for (int i = 0; i < num; i++) {
+                    resumeDao.save(getRandResume());
+                }
             }
 
             stateDao.deleteAll();
