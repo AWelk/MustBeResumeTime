@@ -7,7 +7,7 @@ export class FormDetail {
 
   public id: string;
 
-  constructor(public name: string, public createdOn: Date, public editedOn: Date, public contactForm: ContactForm,
+  constructor(public name: string, public createdOn: number, public editedOn: number, public contactForm: ContactForm,
               public workForm: WorkForm, public edForm: EdForm, public miscForm: MiscForm) {
   }
 

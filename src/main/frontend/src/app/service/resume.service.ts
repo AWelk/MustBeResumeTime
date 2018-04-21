@@ -38,7 +38,7 @@ export class ResumeService {
     const workForm: WorkForm = <WorkForm>this._workForm.value;
     const miscForm: MiscForm = <MiscForm>this._miscForm.value;
 
-    const date: Date = new Date();
+    const date: number = new Date().valueOf();
     const formDetail: FormDetail = new FormDetail(formName, date, date, contactForm, workForm, edForm, miscForm);
     return this._formsService.saveForm(formDetail).map(() => {
       this.resetForms();
@@ -83,7 +83,7 @@ export class ResumeService {
     const workForm: WorkForm = <WorkForm>this._workForm.value;
     const miscForm: MiscForm = <MiscForm>this._miscForm.value;
 
-    const date: Date = new Date();
+    const date: number = new Date().valueOf();
     const formDetail: FormDetail = new FormDetail('void', date, date, contactForm, workForm, edForm, miscForm);
     return this._formsService.printForm(formDetail);
   }

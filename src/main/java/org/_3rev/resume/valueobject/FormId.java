@@ -1,15 +1,13 @@
 package org._3rev.resume.valueobject;
 
-import java.util.Date;
-
 public class FormId {
 
     private String id;
     private String name;
-    private Date createdOn;
-    private Date editedOn;
+    private long createdOn;
+    private long editedOn;
 
-    FormId(String id, String name, Date createdOn, Date editedOn) {
+    FormId(String id, String name, long createdOn, long editedOn) {
         this.id = id;
         this.name = name;
         this.createdOn = createdOn;
@@ -32,19 +30,19 @@ public class FormId {
         this.name = name;
     }
 
-    public Date getCreatedOn() {
+    public long getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(Date createdOn) {
+    public void setCreatedOn(long createdOn) {
         this.createdOn = createdOn;
     }
 
-    public Date getEditedOn() {
+    public long getEditedOn() {
         return editedOn;
     }
 
-    public void setEditedOn(Date editedOn) {
+    public void setEditedOn(long editedOn) {
         this.editedOn = editedOn;
     }
 }

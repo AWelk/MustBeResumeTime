@@ -1,9 +1,9 @@
 export class FormId {
-  public createdOn: Date;
-  public editedOn: Date;
+  public createdOn: number;
+  public editedOn: number;
 
   constructor(public id: string, public name: string, createdOn: number, editedOn: number) {
-    this.createdOn = new Date(createdOn);
-    this.editedOn = new Date(editedOn);
+    this.createdOn = createdOn;
+    this.editedOn = editedOn;
   }
 }

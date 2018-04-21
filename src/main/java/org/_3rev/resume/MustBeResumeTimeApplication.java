@@ -11,12 +11,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 @SpringBootApplication
 public class MustBeResumeTimeApplication {
 
     @Value("${devmode}")
     private String devMode;
+
+    private static Date start = new Date(1262322000000L);
+    private static Date end = new Date(1545800399000L);
 
     public static void main(String[] args) {
         SpringApplication.run(MustBeResumeTimeApplication.class, args);
@@ -41,7 +45,7 @@ public class MustBeResumeTimeApplication {
     }
 
     private FormDetail getRandResume() {
-        return new FormDetail(randString(), new Date(), new Date(), getContactForm(), getWorkForm(), getEdForm(), getMiscForm());
+        return new FormDetail(randString(), randDate(), randDate(), getContactForm(), getWorkForm(), getEdForm(), getMiscForm());
     }
 
     private ContactForm getContactForm() {
@@ -102,6 +106,10 @@ public class MustBeResumeTimeApplication {
             ints.add(randString());
         }
         return ints;
+    }
+
+    private long randDate() {
+        return new Date(ThreadLocalRandom.current().nextLong(start.getTime(), end.getTime())).getTime();
     }
 
     private List<State> getAllStates() {

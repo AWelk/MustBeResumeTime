@@ -2,15 +2,13 @@ package org._3rev.resume.valueobject;
 
 import org.springframework.data.annotation.Id;
 
-import java.util.Date;
-
 public class FormDetail {
 
     @Id
     private String id;
     private String name;
-    private Date createdOn;
-    private Date editedOn;
+    private long createdOn;
+    private long editedOn;
     private ContactForm contactForm;
     private WorkForm workForm;
     private EdForm edForm;
@@ -20,7 +18,7 @@ public class FormDetail {
         super();
     }
 
-    public FormDetail(String name, Date createdOn, Date editedOn, ContactForm contactForm, WorkForm workForm, EdForm edForm, MiscForm miscForm) {
+    public FormDetail(String name, long createdOn, long editedOn, ContactForm contactForm, WorkForm workForm, EdForm edForm, MiscForm miscForm) {
         this.name = name;
         this.createdOn = createdOn;
         this.editedOn = editedOn;
@@ -46,19 +44,19 @@ public class FormDetail {
         this.name = name;
     }
 
-    public Date getCreatedOn() {
+    public long getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(Date createdOn) {
+    public void setCreatedOn(long createdOn) {
         this.createdOn = createdOn;
     }
 
-    public Date getEditedOn() {
+    public long getEditedOn() {
         return editedOn;
     }
 
-    public void setEditedOn(Date editedOn) {
+    public void setEditedOn(long editedOn) {
         this.editedOn = editedOn;
     }
 

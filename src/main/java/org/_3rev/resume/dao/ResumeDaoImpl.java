@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,9 +24,10 @@ public class ResumeDaoImpl implements ResumeDao {
 
     @Override
     public List<FormId> getAllFormIds() {
-        Query query = new Query();
-        query.fields().include("_id").include("name").include("createdOn").include("editedOn");
-        return mongoTemplate.findAll(FormDetail.class).stream().map(FormDetail::toFormId).collect(Collectors.toList());
+        return mongoTemplate.findAll(FormDetail.class).stream()
+                .map(FormDetail::toFormId)
+                .sorted(Comparator.comparing(FormId::getCreatedOn).reversed())
+                .collect(Collectors.toList());
     }
 
     @Override
