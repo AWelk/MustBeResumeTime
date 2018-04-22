@@ -24,8 +24,14 @@
     <td>{{resume.createdOn | date:'short'}}</td>
     <td>{{resume.editedOn | date:'short'}}</td>
     <td><i class="fa fa-pencil" style="cursor: pointer" aria-hidden="true" (click)="onEditForm(resume)"></i></td>
-    <td><i class="fa fa-print" style="cursor: pointer" aria-hidden="true" (click)="onPrintForm(resume)"></i></td>
+    <td>
+      <i *ngIf="isDownloading !== resume" class="fa fa-print" style="cursor: pointer" aria-hidden="true"
+         (click)="onPrintForm(resume)"></i>
+      <i *ngIf="isDownloading === resume" class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+    </td>
     <td><i class="fa fa-trash" style="cursor: pointer" aria-hidden="true" (click)="onDeleteForm(resume)"></i></td>
   </tr>
   </tbody>
 </table>
+
+<a class="download-zip-link" #downloadZipLink></a>

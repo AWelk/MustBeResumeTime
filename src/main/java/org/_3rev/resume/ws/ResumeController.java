@@ -14,7 +14,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
@@ -53,14 +52,8 @@ public class ResumeController {
         resumeService.updateResume(id, form);
     }
 
-//    @PostMapping(value = "/resumes/print", produces = "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
-//    public @ResponseBody byte[] printResume(@RequestBody FormDetail form) throws Docx4JException, IOException {
-//        InputStream stream = printService.printResume(form);
-//        return IOUtils.toByteArray(stream);
-//    }
-
     @PostMapping(value = "/resumes/print")
-    public ResponseEntity<Resource> printResume(@RequestBody FormDetail form) throws Docx4JException, IOException {
+    public ResponseEntity<Resource> printResume(@RequestBody FormDetail form) throws Docx4JException {
         InputStream stream = printService.printResume(form);
         InputStreamResource resource = new InputStreamResource(stream);
         String filename = form.getContactForm().getFirstName() + " " + form.getContactForm().getLastName() + " Resume - " + new Date().toString();
@@ -75,19 +68,10 @@ public class ResumeController {
                 .body(resource);
     }
 
-    @GetMapping(value = "/test", produces = "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
-    public ResponseEntity<Resource> test() throws Docx4JException, IOException {
-        InputStream stream = printService.printResume();
-        InputStreamResource resource = new InputStreamResource(stream);
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition", "inline; filename=myfile.docx");
-        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
-        headers.add("Pragma", "no-cache");
-        headers.add("Expires", "0");
-        return ResponseEntity.ok()
-                .headers(headers)
-                .contentType(MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.wordprocessingml.document"))
-                .body(resource);
+    @GetMapping(value = "/resumes/print/{id}")
+    public ResponseEntity<Resource> printResumeFromId(@PathVariable("id") String id) throws Docx4JException {
+        FormDetail form = resumeService.getFormById(id);
+        return printResume(form);
     }
 
     @DeleteMapping(value = "/resumes/{id}")

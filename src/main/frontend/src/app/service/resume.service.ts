@@ -94,6 +94,10 @@ export class ResumeService {
     return this._formsService.printForm(formDetail);
   }
 
+  printFormFromId(formId: FormId): Observable<Blob> {
+    return this._formsService.printFormFromId(formId);
+  }
+
   getResumeSaveName(): string {
     const contact: ContactForm = <ContactForm>this._contactForm.value;
     const date: Date = new Date();
