@@ -21,7 +21,7 @@ export class ResumeService {
   private _workForm: FormGroup;
   private _miscForm: FormGroup;
 
-  private _loadedForm: string;
+  private _loadedForm: FormId = null;
 
   constructor(private _contactFormService: ContactFormService, private _edFormService: EdFormService,
               private _workFormService: WorkFormService, private _miscFormService: MiscFormService,
@@ -38,10 +38,16 @@ export class ResumeService {
     const workForm: WorkForm = <WorkForm>this._workForm.value;
     const miscForm: MiscForm = <MiscForm>this._miscForm.value;
 
+    let formDetail: FormDetail;
     const date: number = new Date().valueOf();
-    const formDetail: FormDetail = new FormDetail(formName, date, date, contactForm, workForm, edForm, miscForm);
+    if (this._loadedForm === null || (this._loadedForm !== null && formName !== this._loadedForm.name)) {
+      formDetail = new FormDetail(formName, date, date, contactForm, workForm, edForm, miscForm);
+    } else {
+      formDetail = new FormDetail(formName, this._loadedForm.createdOn, date, contactForm, workForm, edForm, miscForm);
+      formDetail.id = this._loadedForm.id;
+    }
+
     return this._formsService.saveForm(formDetail).map(() => {
-      this.resetForms();
       return true;
     });
   }
@@ -55,7 +61,7 @@ export class ResumeService {
   }
 
   loadForm(formId: FormId): Observable<{}> {
-    this._loadedForm = formId.name;
+    this._loadedForm = formId;
     return this._formsService.loadForm(formId).map(resume => {
       this._contactFormService.loadForm(resume.contactForm);
       this._workFormService.loadForm(resume.workForm);
@@ -70,11 +76,11 @@ export class ResumeService {
     this._edFormService.resetForm();
     this._workFormService.resetForm();
     this._miscFormService.resetForm();
-    this._loadedForm = '';
+    this._loadedForm = null;
   }
 
   getLoadedForm(): string {
-    return this._loadedForm;
+    return this._loadedForm === null ? '' : this._loadedForm.name;
   }
 
   printForm(): Observable<Blob> {
